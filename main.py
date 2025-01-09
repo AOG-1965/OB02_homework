@@ -32,14 +32,24 @@ class Admin(User):
         self._level = "admin"               # Новый атрибут производного класса
 
     def add_user(self, user_list, user):
-        user_list.append(user)              # Метод добавления пользователя в список
-        print(f"Пользователь {user.get_name()} успешно добавлен в список")
-        print(user_list)                    # Метод вывода актуального списка пользователей
+        user_list.append(user)              # Добавляем пользователя в список
+        print(f"\nПользователь {user.get_name()} успешно добавлен в список.")
+        self.display_user_list(user_list)   # Выводим актуальный список пользователей
 
     def remove_user(self, user_list, user):
-        user_list.remove(user)              # Метод удаления пользователя из списка
-        print(f"Пользователь {user.get_name()} удален из списка")
-        print(user_list)                    # Метод вывода актуального списка пользователей
+        if user in user_list:
+            user_list.remove(user)          # Удаляем пользователя из списка
+            print(f"\nПользователь {user.get_name()} успешно удален из списка.")
+        else:
+            print(f"\nОшибка: пользователь {user.get_name()} не найден в списке.")
+        self.display_user_list(user_list)   # Выводим актуальный список пользователей
+
+    def display_user_list(self, user_list):                     # Определение метода вывода списка пользователей класса         print("\nАктуальный список пользователей:")             # Выводим актуальный список пользователей
+        if not user_list:                                       # При отсутствии пользователей в списке
+            print("Список пользователей пуст")
+        else:
+            for idx, user in enumerate(user_list, start=1):     # Циклический просмотр индексов в списке, начиная с 1-го
+                print(f"{idx}. ID: {user.get_user_id()}, Имя: {user.get_name()}, Уровень доступа: {user.get_level()}")
 
 # Создание объектов классов
 user_list = []
