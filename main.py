@@ -41,5 +41,21 @@ class Admin(User):
         print(f"Пользователь {user.get_name()} удален из списка")
         print(user_list)                    # Метод вывода актуального списка пользователей
 
+# Создание объектов классов
+user_list = []
+admin = Admin("a1", "Гоша")
+user1 = User("u1", "Степа%")
+user2 = User("u2", "Вася")
+user3 = User("u3", "Коля")
+
+# Тестирование методов классов
+print(user1.get_name())            # Выводим имя пользователя user1
+print(user1.set_name("Степа"))     # Переименовываем пользователя и сразу выводим новое имя
+
+admin.add_user(user_list, user1)
+admin.add_user(user_list, user2)
+admin.add_user(user_list, user3)
+admin.remove_user(user_list, user3)
+
 
 
