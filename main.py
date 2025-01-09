@@ -25,6 +25,21 @@ class User():
         self._name = name               # Метод изменения имени пользователя
         return self._name
 
+# Обозначение класса Admin (производного от User) и его атрибутов
+class Admin(User):
+    def __init__(self, user_id, name):      # Метод инициализации атрибутов класса
+        super().__init__(user_id, name)     # Метод инициализации атрибутов родительского класса
+        self._level = "admin"               # Новый атрибут производного класса
+
+    def add_user(self, user_list, user):
+        user_list.append(user)              # Метод добавления пользователя в список
+        print(f"Пользователь {user.get_name()} успешно добавлен в список")
+        print(user_list)                    # Метод вывода актуального списка пользователей
+
+    def remove_user(self, user_list, user):
+        user_list.remove(user)              # Метод удаления пользователя из списка
+        print(f"Пользователь {user.get_name()} удален из списка")
+        print(user_list)                    # Метод вывода актуального списка пользователей
 
 
 
